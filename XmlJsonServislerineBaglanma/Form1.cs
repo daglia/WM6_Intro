@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -63,18 +64,40 @@ namespace XmlJsonServislerineBaglanma
             lstFirmalar.DisplayMember = "name";
         }
 
+        private Four.Venue seciliFirma;
+
         private void lstFirmalar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblFirmaAdi.Text = String.Empty;
-            lblFirmaAdi.Text = fourFactory.Firmalar[lstFirmalar.SelectedIndex].name;
+            if (lstFirmalar.SelectedItem == null) return;
+            seciliFirma = lstFirmalar.SelectedItem as Four.Venue;
+            lblFirmaAdi.Text = seciliFirma.name;
+            lblAdres.Text = seciliFirma.location.address;
+        }
 
-            lblAdres.Text = String.Empty;
-            for (int i = 0; i < fourFactory.Firmalar[lstFirmalar.SelectedIndex].location.formattedAddress.Count; i++)
+        private BrowserForm form;
+
+        private void btnHaritadaGoster_Click(object sender, EventArgs e)
+        {
+            if (seciliFirma == null) return;
+            string enlem = seciliFirma.location.lat.ToString().Replace(",", ".");
+            string boylam = seciliFirma.location.lng.ToString().Replace(",", ".");
+            string url = $"https://www.google.com/maps/@{enlem},{boylam},20z";
+            //Process.Start(url); **Kolay yolu**
+
+            if(form == null || form.IsDisposed)
             {
-                lblAdres.Text += fourFactory.Firmalar[lstFirmalar.SelectedIndex].location.formattedAddress[i];
-                lblAdres.Text += "\n";
+                form = new BrowserForm(new Uri(url), seciliFirma.name); //URL ve title girilmesi zorunlu tutuluyor.
+                form.Title = seciliFirma.name;
+                form.StartPosition = FormStartPosition.CenterScreen; //Ortada açılsın diye.
+                //form.WindowState = FormWindowState.Maximized; //Tam ekran yapar.
+                form.Show(); //Birden fazla ekran oluşmasını engeller.
             }
-            
+
+            //form = form ?? new BrowserForm(new Uri(url), seciliFirma.name); //URL ve title girilmesi zorunlu tutuluyor.
+            //form.Title = seciliFirma.name;
+            //form.StartPosition = FormStartPosition.CenterScreen; //Ortada açılsın diye.
+            ////form.WindowState = FormWindowState.Maximized; //Tam ekran yapar.
+            //form.Show(); //Birden fazla ekran oluşmasını engeller.
         }
     }
 }

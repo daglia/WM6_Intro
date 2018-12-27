@@ -132,6 +132,7 @@
             this.btnHaritadaGoster.TabIndex = 8;
             this.btnHaritadaGoster.Text = "Haritada Göster";
             this.btnHaritadaGoster.UseVisualStyleBackColor = true;
+            this.btnHaritadaGoster.Click += new System.EventHandler(this.btnHaritadaGoster_Click);
             // 
             // Form1
             // 

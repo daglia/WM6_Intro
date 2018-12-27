@@ -73,6 +73,8 @@ namespace KisiEnvanteriV2
             }
         }
 
+        public byte[] Fotograf { get; set; }
+
         private void NameValid(string value, string propertyName)
         {
             foreach (char harf in value)

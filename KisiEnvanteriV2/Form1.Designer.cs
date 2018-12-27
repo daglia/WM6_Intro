@@ -49,16 +49,16 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.içeriAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dışarıAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.içeriAktarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dışarıAktarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.denetimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dosyaAc = new System.Windows.Forms.OpenFileDialog();
-            this.dosyaKaydet = new System.Windows.Forms.SaveFileDialog();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.dosyaAc = new System.Windows.Forms.OpenFileDialog();
+            this.dosyaKaydet = new System.Windows.Forms.SaveFileDialog();
             this.btnHop = new System.Windows.Forms.Button();
             this.cmsListe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -205,6 +205,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(135, 124);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // menuStrip1
             // 
@@ -235,24 +236,14 @@
             this.içeriAktarToolStripMenuItem,
             this.dışarıAktarToolStripMenuItem});
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
-            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.xMLToolStripMenuItem.Text = "&XML";
-            // 
-            // jSONToolStripMenuItem
-            // 
-            this.jSONToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.içeriAktarToolStripMenuItem1,
-            this.dışarıAktarToolStripMenuItem1});
-            this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
-            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.jSONToolStripMenuItem.Text = "&JSON";
-            this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
             // 
             // içeriAktarToolStripMenuItem
             // 
             this.içeriAktarToolStripMenuItem.Name = "içeriAktarToolStripMenuItem";
             this.içeriAktarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.içeriAktarToolStripMenuItem.Text = "&İçeri Aktar";
             this.içeriAktarToolStripMenuItem.Click += new System.EventHandler(this.içeriAktarToolStripMenuItem_Click);
             // 
@@ -260,21 +251,31 @@
             // 
             this.dışarıAktarToolStripMenuItem.Name = "dışarıAktarToolStripMenuItem";
             this.dışarıAktarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.dışarıAktarToolStripMenuItem.Text = "&Dışarı Aktar";
             this.dışarıAktarToolStripMenuItem.Click += new System.EventHandler(this.dışarıAktarToolStripMenuItem_Click);
+            // 
+            // jSONToolStripMenuItem
+            // 
+            this.jSONToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.içeriAktarToolStripMenuItem1,
+            this.dışarıAktarToolStripMenuItem1});
+            this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
+            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.jSONToolStripMenuItem.Text = "&JSON";
+            this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
             // 
             // içeriAktarToolStripMenuItem1
             // 
             this.içeriAktarToolStripMenuItem1.Name = "içeriAktarToolStripMenuItem1";
-            this.içeriAktarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.içeriAktarToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.içeriAktarToolStripMenuItem1.Text = "&İçeri Aktar";
             this.içeriAktarToolStripMenuItem1.Click += new System.EventHandler(this.içeriAktarToolStripMenuItem1_Click);
             // 
             // dışarıAktarToolStripMenuItem1
             // 
             this.dışarıAktarToolStripMenuItem1.Name = "dışarıAktarToolStripMenuItem1";
-            this.dışarıAktarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.dışarıAktarToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.dışarıAktarToolStripMenuItem1.Text = "&Dışarı Aktar";
             this.dışarıAktarToolStripMenuItem1.Click += new System.EventHandler(this.dışarıAktarToolStripMenuItem1_Click);
             // 
@@ -283,10 +284,6 @@
             this.denetimToolStripMenuItem.Name = "denetimToolStripMenuItem";
             this.denetimToolStripMenuItem.Size = new System.Drawing.Size(64, 23);
             this.denetimToolStripMenuItem.Text = "Denetim";
-            // 
-            // dosyaAc
-            // 
-            this.dosyaAc.FileName = "openFileDialog1";
             // 
             // toolStripTextBox1
             // 
@@ -297,6 +294,10 @@
             // 
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            // 
+            // dosyaAc
+            // 
+            this.dosyaAc.FileName = "openFileDialog1";
             // 
             // btnHop
             // 
